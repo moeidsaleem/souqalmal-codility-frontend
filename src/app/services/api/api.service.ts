@@ -24,10 +24,7 @@ export class ApiService {
 
 
   login(email, password) {
-    this.http.post(this.API_URL + '/auth/signin', {email, password}).subscribe(data => {
-      console.log('data', data);
-      localStorage
-    })
+   return this.http.post(this.API_URL + '/auth/signin', {email, password}).pipe(retry(3), catchError(this.handleError))
   }
 
 
