@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from './services/api/api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'souqalmal-frontend';
+
+  constructor(private api:ApiService){
+   let b= this.api.getShops();
+  }
   
 }
