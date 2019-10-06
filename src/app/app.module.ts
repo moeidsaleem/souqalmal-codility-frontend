@@ -24,7 +24,7 @@ import { LoginModule } from './pages/login/login.module';
     
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},
+    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},
   ],
   bootstrap: [AppComponent]
 })

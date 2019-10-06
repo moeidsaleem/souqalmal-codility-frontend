@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'souqalmal-frontend';
 
   constructor(private api:ApiService){
-   let b= this.api.getShops();
+ this.api.getShops();
   }
   
 }

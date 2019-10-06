@@ -1,1 +1,31 @@
-<p>dashboard works!</p>
+
+<!-- Topbar  -->
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon matSuffix>menu</mat-icon>
+    </button>
+    <span>{{ title }} + {{ currentUser?.name }}</span>
+    <button mat-icon-button (click)="open(list)" class="end">
+        LIKES
+    </button>
+    <button mat-icon-button (click)="open(list)" class="end">
+            All
+        </button>
+    <button mat-icon-button (click)="logoutModal(logoutContent)" class="end">
+      <mat-icon matSuffix>exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar>
+
+
+
+
+<!-- logout-content - start -->
+<ng-template #logoutContent>
+    Are you sure you want to Log out? <br />
+    <br />
+    <button mat-button mat-raised-button color="warn" (click)="logout()">
+      LOGOUT
+    </button>
+    <button mat-button (click)="closeModal()">cancel</button>
+  </ng-template>
+  <!-- logout-content - start -->

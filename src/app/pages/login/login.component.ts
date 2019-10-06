@@ -26,7 +26,10 @@ export class LoginComponent implements OnInit  {
 
   constructor(private api:ApiService,private helper:HelperService, private router:Router) { }
 
+  user;
+  response;
   ngOnInit() {
+
   }
 
   login() {
@@ -40,22 +43,27 @@ export class LoginComponent implements OnInit  {
       this.passwordFormControl.reset()
       return
     }
-
-
   // login user  
-    this.api.login(this.emailFormControl.value , this.passwordFormControl.value).
-    subscribe(response=>{
-      localStorage.setItem('token', response.token);
-    })
+  this.api.login(this.emailFormControl.value , this.passwordFormControl.value).
+  subscribe(response=>{
+   console.log('response', response);
+   this.response = response;
+   this.api.token = this.response.token;
+   this.api.user = this.response.user;
+   localStorage.setItem('token', this.api.token);
 
-    then(data=>{
-      console.log('data', data);
-      // user login 
-       this.router.navigate(['/dashboard']).then(()=>{
-         this.api.setCurrentUser(data.user.uid)
-        //  console.log(this.api.currentUser)
-       })
-    },err=> this.helper.openSnackBar(err.message, 'Close'))
+   this.router.navigate(['/dashboard'])
+    },err=> this.helper.openSnackBar(err, 'Close'))
+  
+
+    // then(data=>{
+    //   console.log('data', data);
+    //   // user login 
+    //    this.router.navigate(['/dashboard']).then(()=>{
+    //      this.api.setCurrentUser(data.user.uid)
+    //     //  console.log(this.api.currentUser)
+    //    })
+    // },err=> this.helper.openSnackBar(err.message, 'Close'))
   }
 
 }

@@ -1,5 +1,11 @@
 # SouqalmalFrontend
 
+The project is based on Angular Material similar to the design request in the mockups, However, i have added login/signup components as extras. Also another addition of logout button in the dashboard, The dashboard is persistant based upon the token. 
+
+Due to the constraint of time, I tried to complete the frontend in a hurry and because of that i had missed many good practice scenarios and defining proper types of some of the components. 
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
 
 ## Development server
