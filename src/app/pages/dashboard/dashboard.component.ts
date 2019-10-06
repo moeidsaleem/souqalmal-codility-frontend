@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service';
 import { HelperService } from 'src/app/services/helper/helper.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +17,7 @@ title = 'Shops Dashboard'
 currentUser;
 response;
   ngOnInit() {
+    console.log(localStorage.getItem('token'))
    this.getUser()
     this.getShops();
   }
@@ -30,16 +32,41 @@ response;
   }
 
 
-  getShops(){
-    this.api.getShops().subscribe(response => {
-      console.log('response--', response);
-      this.data = response;
-
+ async getShops(){
+   let lat, long;
+   let position = await this.api.getPosition();
+   if(position){
+     lat = position.lat;
+     long = position.long;
+   }
+    this.api.getShops(lat, long)
+    .subscribe(response => {
+      console.log('data---', response)
+      this.data =response.map(d=>{
+        d.liked = false;
+           let find;
+           if(d.likes){
+             find = d.likes.find(value => value == this.currentUser._id)
+           }
+           if(find){
+             d.liked = true;
+           }
+      
+          
+        return d
+      });
+      console.log('data', this.data)
     })
   }
 
 
+likeShop(shopId){
+  console.log('shopId', shopId);
+  this.api.likeShop(shopId).subscribe((d)=>{
+     this.getShops()
+  });
 
+}
 
 
   open(list) {

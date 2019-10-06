@@ -6,6 +6,17 @@ Due to the constraint of time, I tried to complete the frontend in a hurry and b
 
 
 
+## Tools
+- Angular 8 
+- Angular Material
+
+
+### Architecture 
+
+The project consist of 3 modules which includes 
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
 
 ## Development server

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
 
 
 //material
@@ -12,6 +13,7 @@ import {MatListModule} from '@angular/material/list';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [],
@@ -20,7 +22,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   ],
   exports:[
     MatToolbarModule,MatIconModule,MatSidenavModule,MatInputModule,MatButtonModule,ScrollingModule,MatSnackBarModule,
-    MatListModule, MatDialogModule,
+    MatListModule, MatDialogModule,MatTabsModule,MatCardModule
   ]
 })
 export class SharedModule { }

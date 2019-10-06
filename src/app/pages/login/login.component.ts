@@ -48,22 +48,11 @@ export class LoginComponent implements OnInit  {
   subscribe(response=>{
    console.log('response', response);
    this.response = response;
-   this.api.token = this.response.token;
-   this.api.user = this.response.user;
-   localStorage.setItem('token', this.api.token);
-
+   localStorage.setItem('token', this.response.token);
    this.router.navigate(['/dashboard'])
     },err=> this.helper.openSnackBar(err, 'Close'))
   
 
-    // then(data=>{
-    //   console.log('data', data);
-    //   // user login 
-    //    this.router.navigate(['/dashboard']).then(()=>{
-    //      this.api.setCurrentUser(data.user.uid)
-    //     //  console.log(this.api.currentUser)
-    //    })
-    // },err=> this.helper.openSnackBar(err.message, 'Close'))
   }
 
 }

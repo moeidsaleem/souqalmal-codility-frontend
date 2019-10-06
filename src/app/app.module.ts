@@ -8,6 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/interceptors/auth.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './pages/login/login.module';
+import { SignupModule } from './pages/signup/signup.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { LoginModule } from './pages/login/login.module';
     BrowserAnimationsModule,
     HttpClientModule,
     LoginModule,
+    SignupModule,
     SharedModule,
     
   ],

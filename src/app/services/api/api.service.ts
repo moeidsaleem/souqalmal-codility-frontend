@@ -16,10 +16,13 @@ export class ApiService {
   user;
 
   constructor(private http: HttpClient) {
-    let token = localStorage.getItem('token');
-    this.token = token ? token : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDk3YmZiMDQwNmQ5NzQ2OTJlMmVkNGIiLCJyb2xlIjoidXNlciIsIm5hbWUiOiJNb2VpZCBTYWxlZW0gS2hhbiIsImV4cCI6MTU3NTQxODc1OC4xODQsImlhdCI6MTU3MDIzNDc1OH0.WtQiau7mxnYXCyOUNegtg3FtTk5kbJuTiOX8NiHdcPU'
   }
 
+
+  setToken(token){
+    this.token = token;
+    localStorage.setItem('token', token);
+  }
 
   ///Authentictor 
 
@@ -32,7 +35,6 @@ export class ApiService {
 
    signup(name, email, password,loc?){
     // this.http.post(this.API_URL + '/auth/signin')
-    // let position = await  this.getPosition(); //pos.lng pos.lat
 
     return this.http.post(this.API_URL + '/auth/signup',
      {name, email, password, location: {
@@ -53,8 +55,12 @@ clearData(){
   this.token = null;
 }
 
-  getShops() {
-   return this.http.get<any>('http://localhost:3000/api/shops/all', this.getHeaders())
+  getShops(lat?, long?) {
+
+   return this.http.post<any>('http://localhost:3000/api/shops/all', {
+     location: [lat || -73.97, long ||  40.77]
+   }, this.getHeaders())
+
     // .pipe(catchError(this.handleError))
   }
 
@@ -98,10 +104,17 @@ clearData(){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': this.token
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
       })
     };
     return httpOptions
   }
+
+
+
+  likeShop(shopId){
+    return this.http.get('http://localhost:3000/api/shops/like/'+shopId, this.getHeaders());
+  }
+
 
 }

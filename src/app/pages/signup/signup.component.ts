@@ -58,11 +58,14 @@ response;
 
     let loc = await this.api.getPosition()
     console.log('location', loc);
-    this.api.signup(this.nameFormControl.value, this.emailFormControl.value, this.passwordFormControl.value,loc)
+    this.api.signup(
+      this.nameFormControl.value, 
+      this.emailFormControl.value,
+       this.passwordFormControl.value,
+       loc)
     .subscribe(data=>{
       this.response = data;
-  
-        localStorage.setItem('uid', this.response.token)
+      this.api.setToken(this.response.token);
         this.router.navigate(['/dashboard']).then(()=>{
           setTimeout(()=>{
             this.helper.openSnackBar('Welcome to Chat App', 'Close');
