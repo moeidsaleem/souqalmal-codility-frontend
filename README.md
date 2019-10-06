@@ -1,8 +1,23 @@
-# SouqalmalFrontend
+# Souqalmal Codility Frontend 
 
 The project is based on Angular Material similar to the design request in the mockups, However, i have added login/signup components as extras. Also another addition of logout button in the dashboard, The dashboard is persistant based upon the token. 
 
-Due to the constraint of time, I tried to complete the frontend in a hurry and because of that i had missed many good practice scenarios and defining proper types of some of the components. 
+Due to the constraint of time, I tried to complete the frontend in a hurry and because of that i had missed  good practice scenarios and defining proper types of some of the components. 
+
+
+I have worked with many Design systems while Ant Design being my favorite. If the following code is not sufficient enough, You can go through my opensource contributions. 
+
+
+
+## Working Modules 
+
+- User can login ✅
+- User can signup ✅ 
+- User location update ✅ 
+- Get Shops by distance ✅ 
+- Like shops ✅ 
+- user can logout ✅ 
+- Fetching distance ✅ 
 
 
 
@@ -14,6 +29,19 @@ Due to the constraint of time, I tried to complete the frontend in a hurry and b
 ### Architecture 
 
 The project consist of 3 modules which includes 
+- **Login Module** - contains user authentication signin logic.
+- **Signup Module** - containers user registration logic
+- **Dashboard Module** - Cotains fetch nearby shop logic 
+
+Services are as followed 
+- **Helper Service** - Helping functions
+- **API Service**  - All Http API calls 
+
+
+Interfaces 
+- **Shop**
+- **User** 
+
 
 
 
